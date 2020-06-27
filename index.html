@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="">
+    <title>Rock, Paper, Scissors</title>
+  </head>
+  <body>
+
+<script>
+   //wins/loss/tie global vars
+   var wins = 0; 
+   var losses = 0;
+   var ties = 0;
+   //computer choice array
+   var choices = ["r", "p", "s"];
+
+   //Game start message
+   alert("Rock, Paper, Scissors...GO!!");
+
+    // loop 10 times for 10 rounds
+   for (var i = 0; i < 10; i++ ) {
+       // get a random number between 0 & 2, then use it to index into our computer choice array
+       //store that random computer choice in a variable called "computerChoice"
+       // dont add 1 (+1) to the end because you want zero (0)
+       //referring to array with adding 'choices' bc if not then its gonna be a #
+       var computerChoice = choices[Math.floor(Math.random() * choices.length)];
+       //prompt theuser for a letter (r,p,s)
+       //gave use some direction with telling them what to type
+       var userChoice = prompt("What do you choose? (type 'r', 'p', or 's')").toLowerCase().trim(); //no trailing spaces
+
+       if (userChoice === "r" || userChoice === "p" || userChoice === "s") {
+
+       //compare the two and determine who won the round
+       if (userChoice === "r" && computerChoice === "s" || 
+           userChoice === "p" && computerChoice === "r" ||
+           userChoice === "s" && computerChoice === "p" ){
+           wins++; //increase variable (if #) by 1 
+           alert("You won the round! total wins" + wins);
+       } else if (userChoice === computerChoice) {
+           ties++;
+           alert("You tied the round! total ties" + ties);
+        } else {
+           losses++;
+           alert("You lost the round! total losses:" + losses);
+        }
+
+      }
+
+        else {
+          alert("Hey i said r, p, or s.... cant you read???");
+          i--; //reduce the value of i and effectively restart that same loop 
+        }
+      
+        //display the two choices back to the user
+       // \n new line inside of a string
+       alert("you chose: " + userChoice + "\ncomputer chose: " + computerChoice);
+
+
+  
+      }
+
+      alert("Great Job! \nfinal win count: " + wins + "\nfinal loss count: " + losses + "\nfinal ties " + ties);
+
+</script>
+</body>
+</html>
